@@ -1,0 +1,21 @@
+{
+  "name": "interview",
+  "version": "1.0.0",
+  "description": "This is node.js project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon run server.js"
+  },
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "Dev",
+    "Tinder"
+  ],
+  "author": "Ravi Kant",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
