@@ -33,9 +33,5 @@ profileRouter.patch("/profile/edit" ,userAuth , async (req,res)=>{
 
 });
 
-// profileRouter.patch("/profile/password" , async (req,res)=>{
-//     try{}catch{}
-// })
-
 module.exports = profileRouter;
 

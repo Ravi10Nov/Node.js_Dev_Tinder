@@ -57,6 +57,8 @@ authRouter.post("/logout",async (req,res)=>{
 });
 
 authRouter.post("/changePassword",userAuth ,async (req,res)=>{
+
+    
     try{
 
     }catch(err){

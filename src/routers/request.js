@@ -20,11 +20,6 @@ requestRouter.post("/request/send/:status/:userId",userAuth, async (req,res)=>{
         if (! toUser){
             return res.status(404).json({message:"User not found!!!"});
         }
-
-        // if (fromUserId == toUserId){
-        //     return res.status(402).json({message:"User is same.Can not send connection request!!!"});
-        // }
-        // console.log(fromUserId == toUserId)
         const existingConnectionRequest = await ConnectionRequest.findOne({
             $or:[
                 {fromUserId ,toUserId},
@@ -70,7 +65,6 @@ requestRouter.post("/request/review/:status/:requestId",userAuth , async (req,re
         })
 
         if (! connectionRequest){
-            // res.status(404).json({message:"Connection request not found."})
             throw new Error("Connection request not found.")
         }
 

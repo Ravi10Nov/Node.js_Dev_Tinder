@@ -54,10 +54,6 @@ const userSchema = new mongoose.Schema({
     }
 },{timestamps:true});   
 
-// const UserModel = mongoose.model("User" , userSchema);
-
-// module.exports = UserModel;
-
 userSchema.index({firstName:1 , lastName:1});
 
 userSchema.methods.getJWT = async function () {
