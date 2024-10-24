@@ -17,7 +17,7 @@ const userRouter = require("./src/routers/user");
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://dev-tinder-app.vercel.app",
     credentials:true
 }))
 
