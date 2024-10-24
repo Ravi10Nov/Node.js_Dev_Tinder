@@ -56,10 +56,19 @@ authRouter.post("/logout",async (req,res)=>{
     res.send(`loggedout successfully`);
 });
 
-authRouter.post("/changePassword",userAuth ,async (req,res)=>{
+authRouter.patch("/changePassword",userAuth ,async (req,res)=>{
 
+    const loggedInUser = req.user;
     
     try{
+        const {newPassword , confirmPassword}= req.body;
+        if (newPassword !== confirmPassword){
+            throw new Error("Password not match")
+        }
+        const passwordHash = await bcrypt.hash(newPassword, 10);
+        loggedInUser.password = passwordHash;
+        await loggedInUser.save()
+        res.status(200).json({message:"Password updated successfully",user:loggedInUser});
 
     }catch(err){
         res.status(400).json({message:err.message});
