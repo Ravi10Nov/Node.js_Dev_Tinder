@@ -40,7 +40,12 @@ authRouter.post("/login", async (req, res) => {
                 throw new Error("Invalid email id or password");
             } else {
                 const token = await user.getJWT();
-                res.cookie("token", token);
+                res.cookie("token", token,{
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === 'production',  // Use secure cookies in production
+                    sameSite: 'None',  // Allow cookies to be sent across different domains
+                    maxAge: 24 * 60 * 60 * 1000  // 1 day expiry
+                });
                 res.status(200).json({message:"Login successfully....",data:user});
             }
         };
