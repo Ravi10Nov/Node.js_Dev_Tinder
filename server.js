@@ -19,13 +19,14 @@ const userRouter = require("./src/routers/user");
 
 const port = process.env.PORT || 4500;
 
+console.log('Using port:', port);
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     origin:"https://dev-tinder-app.vercel.app",
     // origin:"http://localhost:5173",
     credentials:true,
-    "Access-Control-Allow-Origin": "*"
 }))
 
 app.use("/",authRouter);
@@ -38,12 +39,13 @@ connectDB()
     .then(() => {
         console.log('Database connection established...');
         app.listen(port, () => {
-            console.log(`App is running on port at ${port}`);
+            console.log(`App is running on port ${port}`);
         });
     })
     .catch((err) => {
-        console.error('Database can not be connected')
+        console.error('Database connection failed:', err);  
     });
+
 
 
 
